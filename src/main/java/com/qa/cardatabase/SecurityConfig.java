@@ -31,7 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	auth.userDetailsService(userDetailsService)
 	.passwordEncoder(new BCryptPasswordEncoder());
 	}
-	
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 	http.csrf().disable().cors().and().authorizeRequests()
@@ -43,8 +43,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	// Filter for other requests to check JWT in header
 	.addFilterBefore(new AuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);
 	}
-	
-	
+
+
 	// Needed as our React app runs on a different port and is therefore a different "origin"
 	@Bean
 	CorsConfigurationSource corsConfigurationSource() {
